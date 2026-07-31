@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   ArrowRight,
   Banknote,
@@ -127,10 +128,19 @@ export function CapstreamHome() {
       </header>
 
       <section className={styles.hero} id="top">
+        <Image
+          className={styles.heroImage}
+          src="/images/capstream-hero-construction.webp"
+          alt="A major civic construction project taking shape at blue hour"
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className={styles.heroVeil} aria-hidden="true" />
         <div className={styles.heroInner} id="main-content">
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>Capital and surety, working together</p>
-            <h1>The capacity to pursue what comes next.</h1>
+            <p className={styles.kicker}>Construction finance, re-engineered</p>
+            <h1>The financial foundation for bigger work.</h1>
             <p className={styles.heroLead}>
               CapStream helps construction contractors secure the bonding and
               project mobilization funding required to compete for larger work,
@@ -153,8 +163,8 @@ export function CapstreamHome() {
           <aside className={styles.underwritingPanel} aria-label="Illustrative project readiness summary">
             <div className={styles.panelHeader}>
               <div>
-                <span>Illustrative opportunity</span>
-                <strong>Project Readiness Summary</strong>
+                <span>Opportunity readiness</span>
+                <strong>Municipal Retrofit</strong>
               </div>
               <span className={styles.status}><i /> Prepared</span>
             </div>
@@ -198,10 +208,25 @@ export function CapstreamHome() {
         </div>
       </section>
 
+      <section className={styles.proofBand} aria-label="CapStream at a glance">
+        <div>
+          <span>One</span>
+          <p>company profile across funding and surety</p>
+        </div>
+        <div>
+          <span>Up to 20%</span>
+          <p>of contract value in mobilization funding</p>
+        </div>
+        <div>
+          <span>Two</span>
+          <p>coordinated capabilities built for growth</p>
+        </div>
+      </section>
+
       <section className={styles.introduction} id="solutions">
         <div className={styles.sectionLabel}>A coordinated solution</div>
         <div>
-          <h2>Two essential capabilities. One clear path to growth.</h2>
+          <h2>Capital should accelerate the work, not stand in its way.</h2>
           <p>
             Winning substantial contracts requires more than opportunity. It
             requires the financial capacity to qualify, mobilize, and perform.

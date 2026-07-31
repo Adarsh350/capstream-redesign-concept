@@ -247,3 +247,148 @@
   .underwritingPanel { animation: enter .65s .08s ease-out both; }
   @keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 }
+
+/* V3 art direction: private credit meets architecture studio. */
+.page {
+  --navy: #071923;
+  --navy-soft: #102b38;
+  --ink: #14242b;
+  --stone: #ebe7de;
+  --paper: #f8f6f0;
+  --muted: #65747a;
+  --line: #d3cfc5;
+  --gold: #aa884d;
+  --gold-light: #d1b984;
+  background: var(--paper);
+}
+
+.topBar { position: relative; z-index: 30; background: #06161f; border-bottom: 1px solid rgba(255,255,255,.11); }
+.topBarInner { max-width: 1420px; color: rgba(255,255,255,.61); }
+.header { max-width: none; height: 94px; padding-inline: max(2.5rem, calc((100vw - 1320px) / 2)); background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.12); }
+.logoLockup { color: white; }
+.logoMark span { border-color: white; }
+.logoMark span:last-child { border-color: var(--gold-light); }
+.desktopNav, .signIn { color: rgba(255,255,255,.82); }
+.desktopNav a:hover, .signIn:hover { color: white; }
+.desktopNav a::after { background: var(--gold-light); }
+.headerActions .primaryButton { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy) !important; }
+.headerActions .primaryButton:hover { background: #dfca99; }
+
+.hero { position: relative; min-height: 800px; isolation: isolate; overflow: hidden; border: 0; background: var(--navy); }
+.heroImage { z-index: -3; object-fit: cover; object-position: center; }
+.heroVeil { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(4,19,28,.98) 0%, rgba(4,19,28,.91) 34%, rgba(4,19,28,.52) 62%, rgba(4,19,28,.12) 100%); }
+.hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(90deg, black, transparent 72%); }
+.heroInner { max-width: 1420px; min-height: 800px; padding-block: 6rem 7rem; grid-template-columns: minmax(0,1.08fr) minmax(390px,.62fr); gap: 5rem; }
+.heroCopy { position: relative; max-width: 730px; color: white; }
+.heroCopy::before { content: "CS / 01"; position: absolute; left: -4.2rem; top: .15rem; color: rgba(255,255,255,.28); font-family: var(--font-mono-body); font-size: .58rem; letter-spacing: .14em; writing-mode: vertical-rl; }
+.hero .kicker { color: var(--gold-light); }
+.hero h1 { max-width: 760px; color: white; font-size: clamp(4.4rem, 6.8vw, 7.1rem); line-height: .92; letter-spacing: -.057em; text-wrap: balance; }
+.heroLead { max-width: 630px; color: rgba(255,255,255,.69); font-size: 1.02rem; }
+.hero .primaryButtonLarge { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy) !important; }
+.hero .primaryButtonLarge:hover { background: #dec794; }
+.hero .secondaryButton { color: white; border-color: rgba(255,255,255,.4); }
+.hero .secondaryButton:hover { border-color: white; background: rgba(255,255,255,.06); }
+.heroAssurance { color: rgba(255,255,255,.55); }
+.heroAssurance svg { color: var(--gold-light); }
+.underwritingPanel { align-self: end; margin-bottom: -2.5rem; border: 0; box-shadow: 0 28px 70px rgba(0,0,0,.27); }
+.panelHeader { min-height: 82px; }
+.summaryValue { background: var(--gold-light); color: var(--navy); }
+.summaryValue span { color: rgba(7,25,35,.58); }
+.summaryRows > div { min-height: 66px; }
+.panelFooter { background: #ece8de; }
+
+.capabilityBar { background: var(--navy); border-color: rgba(255,255,255,.12); }
+.capabilityBar > div { max-width: 1420px; min-height: 88px; }
+.capabilityBar span { color: rgba(255,255,255,.74); border-color: rgba(255,255,255,.15); }
+
+.proofBand { max-width: 1320px; margin: auto; padding: 5rem 2.5rem 3rem; display: grid; grid-template-columns: repeat(3,1fr); }
+.proofBand > div { min-height: 190px; padding: 1.8rem 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; border-left: 1px solid var(--line); }
+.proofBand > div:last-child { border-right: 1px solid var(--line); }
+.proofBand span { color: var(--navy); font-family: var(--font-display); font-size: clamp(3.1rem, 5vw, 5.5rem); line-height: .9; letter-spacing: -.05em; }
+.proofBand p { max-width: 240px; margin: 1rem 0 0; color: var(--muted); font-size: .7rem; line-height: 1.6; text-transform: uppercase; letter-spacing: .07em; }
+
+.introduction { padding-top: 6rem; padding-bottom: 5rem; }
+.introduction > div:last-child { grid-template-columns: 1.3fr .7fr; }
+.introduction h2 { max-width: 760px; font-size: clamp(3.4rem, 5vw, 5.6rem); line-height: 1.01; }
+
+.solutionSection { gap: 0; padding-bottom: 9rem; align-items: start; }
+.solutionCard { min-height: 610px; padding: 3.4rem; }
+.solutionCard:first-child { margin-top: 4.5rem; background: #ded8cb; border-color: #ded8cb; }
+.solutionCard:last-child { background: var(--navy); border-color: var(--navy); color: white; }
+.solutionCard:last-child .solutionTopline span, .solutionCard:last-child > p:not(.cardEyebrow), .solutionCard:last-child li { color: rgba(255,255,255,.6); }
+.solutionCard:last-child h3, .solutionCard:last-child a { color: white; }
+.solutionCard:last-child a { border-color: var(--gold-light); }
+.solutionCard h3 { font-size: 2.7rem; }
+.solutionTopline { margin-bottom: 5.5rem; }
+
+.approachSection { position: relative; overflow: hidden; padding-block: 10rem; }
+.approachSection::before { content: "04"; position: absolute; right: -1rem; top: -3rem; color: rgba(255,255,255,.025); font-family: var(--font-display); font-size: 26rem; line-height: 1; }
+.approachIntro, .processGrid { position: relative; }
+.processGrid article { min-height: 370px; }
+.processGrid h3 { margin-top: 8rem; font-size: 1.65rem; }
+
+.calculatorSection { max-width: none; padding: 9rem max(2.5rem, calc((100vw - 1240px) / 2)); background: #d8d1c3; gap: 8rem; }
+.calculatorIntro h2 { font-size: clamp(3.3rem, 4.8vw, 5.2rem); }
+.rangeValue { font-size: 3.1rem; }
+.estimateCard { position: relative; padding: 3rem; background: var(--paper); border: 0; box-shadow: 0 28px 60px rgba(7,25,35,.12); }
+.estimateCard::before { content: "CAPSTREAM / CAPACITY MODEL"; position: absolute; right: -2.1rem; top: 5rem; color: rgba(7,25,35,.35); font-family: var(--font-mono-body); font-size: .52rem; letter-spacing: .12em; writing-mode: vertical-rl; }
+.estimateMain strong { font-size: clamp(3.6rem, 5vw, 5.8rem); }
+
+.differenceSection { background: var(--paper); padding-block: 9rem; }
+.differenceGrid article { min-height: 340px; }
+.differenceGrid article:nth-child(2) { background: var(--stone); padding-inline: 2.4rem; }
+.differenceGrid h3 { margin-top: 6rem; font-size: 1.7rem; }
+
+.aboutStatement { position: relative; overflow: hidden; background: var(--gold-light); }
+.aboutStatement::after { content: "CS"; position: absolute; right: -2rem; bottom: -6rem; color: rgba(7,25,35,.07); font-family: var(--font-display); font-size: 23rem; line-height: 1; }
+.aboutStatement > span, .aboutStatement blockquote { position: relative; z-index: 1; }
+.aboutCopy { background: var(--navy-soft); }
+
+.finalCta { position: relative; overflow: hidden; padding-block: 7rem; background: var(--paper); }
+.finalCta::after { content: "→"; position: absolute; right: 2rem; bottom: -6rem; color: rgba(170,136,77,.08); font-family: var(--font-display); font-size: 20rem; line-height: 1; }
+.finalCta > * { position: relative; z-index: 1; }
+.footer { background: #06161f; color: rgba(255,255,255,.64); }
+.footer .logoLockup, .footerLinks strong { color: white; }
+.footer .logoMark span { border-color: white; }
+.footer .logoMark span:last-child { border-color: var(--gold-light); }
+.footerTop > div:first-child p, .footerLinks span, .footerBottom { color: rgba(255,255,255,.45); }
+.footerBottom { border-color: rgba(255,255,255,.12); }
+
+@media (max-width: 1050px) {
+  .header { padding-inline: 1.5rem; }
+  .menuButton { border-color: rgba(255,255,255,.25); color: white; }
+  .mobileNav { background: var(--navy); border-color: rgba(255,255,255,.14); }
+  .mobileNav a { color: white; border-color: rgba(255,255,255,.14); }
+  .heroInner { grid-template-columns: minmax(0,1fr); }
+  .heroCopy { max-width: 760px; }
+  .underwritingPanel { max-width: 640px; margin-bottom: -3rem; }
+  .proofBand { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .header { height: 78px; padding-inline: 1.25rem; }
+  .mobileNav { top: 78px; }
+  .hero { min-height: auto; }
+  .heroImage { object-position: 68% center; }
+  .heroVeil { background: linear-gradient(180deg, rgba(4,19,28,.86), rgba(4,19,28,.97)); }
+  .heroInner { min-height: auto; padding: 5rem 1.25rem 6rem; }
+  .heroCopy::before { display: none; }
+  .hero h1 { font-size: clamp(3.3rem, 15.5vw, 4.5rem); line-height: .96; }
+  .underwritingPanel { margin-bottom: 0; }
+  .capabilityBar > div { grid-template-columns: 1fr 1fr; }
+  .proofBand { padding: 3.5rem 1.25rem 2rem; grid-template-columns: 1fr; }
+  .proofBand > div { min-height: 150px; padding: 1.5rem 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .proofBand span { font-size: 4rem; }
+  .introduction { padding-top: 4rem; }
+  .introduction h2 { font-size: 3.2rem; }
+  .solutionSection { gap: 1rem; }
+  .solutionCard:first-child { margin-top: 0; }
+  .solutionCard { min-height: auto; }
+  .solutionTopline { margin-bottom: 3.5rem; }
+  .approachSection { padding-block: 6rem; }
+  .calculatorSection { padding: 6rem 1.25rem; gap: 4rem; }
+  .estimateCard::before { display: none; }
+  .differenceSection { padding-block: 6rem; }
+  .aboutStatement::after { font-size: 15rem; }
+  .finalCta { padding-block: 5rem; }
+}

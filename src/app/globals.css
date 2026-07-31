@@ -45,13 +45,13 @@ input {
 }
 
 :where(a, button, input):focus-visible {
-  outline: 3px solid #ff6b35;
+  outline: 3px solid #b99a61;
   outline-offset: 3px;
 }
 
 ::selection {
-  background: #d8ff52;
-  color: #101c23;
+  background: #b99a61;
+  color: #071923;
 }
 
 @media (prefers-reduced-motion: reduce) {
