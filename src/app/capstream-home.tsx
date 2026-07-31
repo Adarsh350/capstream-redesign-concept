@@ -4,12 +4,9 @@ import Image from "next/image";
 import {
   ArrowRight,
   Banknote,
-  BriefcaseBusiness,
-  Building2,
   Check,
   ChevronDown,
   CircleCheck,
-  FileCheck2,
   Landmark,
   LockKeyhole,
   Menu,
@@ -42,41 +39,34 @@ function formatCurrency(value: number) {
   }).format(value);
 }
 
-const processSteps = [
+const workflowRows = [
   {
-    number: "01",
-    phase: "Prepare",
-    title: "Build one contractor profile",
-    body: "Share ownership, experience, completed work, and financials once to establish your underwriting story.",
-    icon: FileCheck2,
+    stage: "Company profile",
+    timing: "Before the opportunity",
+    provide: "Ownership, experience, financial statements, tax returns, and completed-job history.",
+    evaluate: "Operating history, financial strength, largest completed work, and overall program fit.",
+    receive: "A defined bonding program and a project-financing commitment designed to support capacity.",
   },
   {
-    number: "02",
-    phase: "Qualify",
-    title: "Establish bonding capacity",
-    body: "Understand your position before the opportunity arrives and pursue work with a defined bonding line.",
-    icon: Landmark,
+    stage: "Bid request",
+    timing: "When you are ready to compete",
+    provide: "Bid specifications, project details, and an estimated job-cost breakdown.",
+    evaluate: "Contract scope, job economics, existing backlog, and fit within your established line.",
+    receive: "The bid bond required to submit a qualified proposal—often within 24 hours after line establishment.",
   },
   {
-    number: "03",
-    phase: "Compete",
-    title: "Secure the bid bond",
-    body: "Submit project details and an estimated job-cost breakdown for the opportunity you intend to win.",
-    icon: ShieldCheck,
+    stage: "Contract award",
+    timing: "After the winning bid",
+    provide: "The awarded contract, final scope, schedule, and updated financial or job information if requested.",
+    evaluate: "Final performance risk, payment obligations, and the capital required to start the project.",
+    receive: "Payment and performance bonds, with underwriting turnaround of up to three days once complete.",
   },
   {
-    number: "04",
-    phase: "Award",
-    title: "Finalize project protection",
-    body: "Once awarded, move into payment and performance bonds with the same coordinated relationship.",
-    icon: BriefcaseBusiness,
-  },
-  {
-    number: "05",
-    phase: "Mobilize",
-    title: "Put startup capital to work",
-    body: "Fund bond costs, materials, equipment rentals, and other eligible costs required to begin delivery.",
-    icon: Building2,
+    stage: "Mobilization",
+    timing: "Before the first project payment",
+    provide: "An eligible startup budget covering bond costs, materials, equipment rentals, and project needs.",
+    evaluate: "Contract value, approved use of funds, repayment structure, and project cash-flow timing.",
+    receive: "Potential project mobilization funding of up to 20% of contract value, subject to underwriting.",
   },
 ];
 
@@ -147,8 +137,8 @@ export function CapstreamHome() {
       <section className={styles.hero} id="top">
         <Image
           className={styles.heroImage}
-          src="/images/capstream-hero-construction.webp"
-          alt="A major civic construction project taking shape at blue hour"
+          src="/images/capstream-hero-underwriting.webp"
+          alt="A construction company owner and surety adviser reviewing project financials and blueprints at an active jobsite"
           fill
           priority
           sizes="100vw"
@@ -177,49 +167,6 @@ export function CapstreamHome() {
             </div>
           </div>
 
-          <aside className={styles.architecturePanel} aria-label="How CapStream connects bonding and project capital">
-            <div className={styles.architectureHeader}>
-              <div>
-                <span>CapStream opportunity architecture</span>
-                <strong>One profile. One coordinated path.</strong>
-              </div>
-              <span className={styles.liveStatus}><i /> Ready</span>
-            </div>
-            <div className={styles.profileNode}>
-              <span>01 / Contractor profile</span>
-              <strong>Your financial story</strong>
-              <small>Experience · ownership · financials · job history</small>
-            </div>
-            <div className={styles.capacityRails}>
-              <div className={styles.railCard}>
-                <div><ShieldCheck /><span>Surety capacity</span></div>
-                <strong>Bonding line</strong>
-                <small>Bid bonds</small>
-              </div>
-              <div className={styles.railCard}>
-                <div><Banknote /><span>Capital capacity</span></div>
-                <strong>Funding commitment</strong>
-                <small>Project specific</small>
-              </div>
-            </div>
-            <div className={styles.awardGate}>
-              <span>Contract awarded</span>
-              <i aria-hidden="true" />
-            </div>
-            <div className={styles.activationNode}>
-              <div>
-                <span>Project protection</span>
-                <strong>Payment + performance bonds</strong>
-              </div>
-              <div>
-                <span>Project activation</span>
-                <strong>Up to 20% mobilization funding</strong>
-              </div>
-            </div>
-            <div className={styles.architectureFooter}>
-              <span>Bid</span><i /><span>Bond</span><i /><span>Award</span><i /><span>Mobilize</span>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -232,12 +179,39 @@ export function CapstreamHome() {
         </div>
       </section>
 
-      <section className={styles.proofBand} aria-label="CapStream at a glance">
-        <div><span>01</span><p>company profile across funding and surety</p></div>
-        <div><span>20%</span><p>of contract value in potential mobilization funding</p></div>
-        <div><span>24h</span><p>bid bonds often available after a line is established</p></div>
-        <div><span>3d</span><p>up to three days for payment and performance underwriting</p></div>
-        <small>Timelines and capacity are subject to underwriting, eligibility, and complete documentation.</small>
+      <section className={styles.capacityMomentSection} aria-labelledby="capacity-moment-heading">
+        <div className={styles.capacityMomentIntro}>
+          <p className={styles.sectionLabel}>Where CapStream fits</p>
+          <h2 id="capacity-moment-heading">Three moments determine whether an opportunity becomes revenue.</h2>
+          <p>CapStream coordinates the requirement at each moment, so bonding and project liquidity are considered as one path rather than two disconnected applications.</p>
+        </div>
+        <div className={styles.capacityTimeline}>
+          <article>
+            <div className={styles.timelineMarker}><span>01</span><small>Before the bid</small></div>
+            <h3>Prove you can take on the work.</h3>
+            <dl>
+              <div><dt>Contractor requirement</dt><dd>A defined bonding line and bid bond.</dd></div>
+              <div><dt>CapStream response</dt><dd>Underwrite the company profile before the deadline arrives.</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div className={styles.timelineMarker}><span>02</span><small>At contract award</small></div>
+            <h3>Protect the project and everyone on it.</h3>
+            <dl>
+              <div><dt>Contractor requirement</dt><dd>Payment and performance bonds.</dd></div>
+              <div><dt>CapStream response</dt><dd>Carry the existing profile into final project underwriting.</dd></div>
+            </dl>
+          </article>
+          <article>
+            <div className={styles.timelineMarker}><span>03</span><small>Before first payment</small></div>
+            <h3>Carry the cost of getting started.</h3>
+            <dl>
+              <div><dt>Contractor requirement</dt><dd>Cash for bonds, materials, and equipment.</dd></div>
+              <div><dt>CapStream response</dt><dd>Provide potential mobilization funding up to 20% of contract value.</dd></div>
+            </dl>
+          </article>
+        </div>
+        <p className={styles.capacityDisclaimer}>All bonding, timing, and funding outcomes remain subject to eligibility, complete documentation, and underwriting.</p>
       </section>
 
       <section className={styles.advantageSection} id="advantage">
@@ -308,24 +282,30 @@ export function CapstreamHome() {
 
       <section className={styles.processSection} id="process">
         <div className={styles.processIntro}>
-          <p className={styles.kicker}>How it works</p>
-          <h2>From company profile to first day on site.</h2>
+          <p className={styles.kicker}>What actually happens</p>
+          <h2>A transparent underwriting path, with a concrete output at every stage.</h2>
           <p>
-            The CapStream process follows the way opportunities actually move:
-            preparation before the bid, protection at award, and capital at mobilization.
+            This is the information CapStream asks for, what it evaluates, and
+            what a contractor can expect to receive when the file is complete.
           </p>
         </div>
-        <div className={styles.phaseLegend}><span>Bid phase</span><span>Award phase</span></div>
-        <div className={styles.processGrid}>
-          {processSteps.map(({ number, phase, title, body, icon: Icon }) => (
-            <article key={number}>
-              <div className={styles.processTop}><span>{number}</span><Icon /></div>
-              <small>{phase}</small>
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </article>
+        <div className={styles.workflowTable} role="table" aria-label="CapStream underwriting workflow">
+          <div className={styles.workflowHeader} role="row">
+            <span role="columnheader">Stage</span>
+            <span role="columnheader">You provide</span>
+            <span role="columnheader">CapStream evaluates</span>
+            <span role="columnheader">You receive</span>
+          </div>
+          {workflowRows.map(({ stage, timing, provide, evaluate, receive }, index) => (
+            <div className={styles.workflowRow} role="row" key={stage}>
+              <div role="cell"><span>0{index + 1}</span><strong>{stage}</strong><small>{timing}</small></div>
+              <p role="cell">{provide}</p>
+              <p role="cell">{evaluate}</p>
+              <p role="cell">{receive}</p>
+            </div>
           ))}
         </div>
+        <p className={styles.workflowNote}>Timing begins after CapStream receives a complete file. Additional information may be required based on the contractor or project.</p>
       </section>
 
       <section className={styles.mandateSection} id="about">
