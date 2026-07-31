@@ -268,7 +268,7 @@
 .logoLockup { color: white; }
 .logoMark span { border-color: white; }
 .logoMark span:last-child { border-color: var(--gold-light); }
-.desktopNav, .signIn { color: rgba(255,255,255,.82); }
+.desktopNav, .header .signIn { color: rgba(255,255,255,.82); }
 .desktopNav a:hover, .signIn:hover { color: white; }
 .desktopNav a::after { background: var(--gold-light); }
 .headerActions .primaryButton { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy) !important; }
