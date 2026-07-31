@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CapStream | The financial foundation for bigger work.",
+  title: "CapStream | Bond the bid. Fund the build.",
   description:
-    "A homepage redesign concept for CapStream, featuring surety bonding and project mobilization funding for construction contractors.",
+    "CapStream coordinates surety bonding and project mobilization funding so construction contractors can qualify, compete, and start awarded work with greater financial capacity.",
 };
 
 export default function RootLayout({

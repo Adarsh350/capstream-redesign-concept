@@ -10,7 +10,6 @@ import {
   ChevronDown,
   CircleCheck,
   FileCheck2,
-  Handshake,
   Landmark,
   LockKeyhole,
   Menu,
@@ -46,28 +45,46 @@ function formatCurrency(value: number) {
 const processSteps = [
   {
     number: "01",
-    title: "Create one profile",
-    body: "Share your company history, experience, and financial information through one secure application.",
+    phase: "Prepare",
+    title: "Build one contractor profile",
+    body: "Share ownership, experience, completed work, and financials once to establish your underwriting story.",
     icon: FileCheck2,
   },
   {
     number: "02",
-    title: "Establish your capacity",
-    body: "Receive a bonding line and understand your position before the next opportunity arrives.",
+    phase: "Qualify",
+    title: "Establish bonding capacity",
+    body: "Understand your position before the opportunity arrives and pursue work with a defined bonding line.",
     icon: Landmark,
   },
   {
     number: "03",
-    title: "Secure the right bonds",
-    body: "Request bid, payment, and performance bonds for the projects you are ready to pursue.",
+    phase: "Compete",
+    title: "Secure the bid bond",
+    body: "Submit project details and an estimated job-cost breakdown for the opportunity you intend to win.",
     icon: ShieldCheck,
   },
   {
     number: "04",
-    title: "Mobilize with confidence",
-    body: "Access project capital for materials, equipment, bond costs, and other critical startup needs.",
+    phase: "Award",
+    title: "Finalize project protection",
+    body: "Once awarded, move into payment and performance bonds with the same coordinated relationship.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    number: "05",
+    phase: "Mobilize",
+    title: "Put startup capital to work",
+    body: "Fund bond costs, materials, equipment rentals, and other eligible costs required to begin delivery.",
     icon: Building2,
   },
+];
+
+const underwritingItems = [
+  "Business financial statements",
+  "Business and personal tax returns",
+  "Overview of completed projects",
+  "Current bid or contract details",
 ];
 
 export function CapstreamHome() {
@@ -83,10 +100,10 @@ export function CapstreamHome() {
 
       <div className={styles.topBar}>
         <div className={styles.topBarInner}>
-          <span>Construction finance and surety solutions</span>
+          <span>Integrated surety + project capital</span>
           <div>
             <a href="mailto:team@capstream.app">team@capstream.app</a>
-            <span>646 442 1040</span>
+            <a href="tel:+16464421040">646 442 1040</a>
           </div>
         </div>
       </div>
@@ -96,10 +113,10 @@ export function CapstreamHome() {
           <CapstreamLogo />
         </a>
         <nav className={styles.desktopNav} aria-label="Primary navigation">
+          <a href="#advantage">Why CapStream</a>
           <a href="#solutions">Solutions</a>
-          <a href="#approach">Our approach</a>
-          <a href="#calculator">Capacity calculator</a>
-          <a href="#about">About</a>
+          <a href="#process">How it works</a>
+          <a href="#calculator">Calculator</a>
         </nav>
         <div className={styles.headerActions}>
           <a className={styles.signIn} href={PROFILE_URL}>Sign in</a>
@@ -118,10 +135,10 @@ export function CapstreamHome() {
         </button>
         {menuOpen ? (
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
+            <a href="#advantage" onClick={() => setMenuOpen(false)}>Why CapStream</a>
             <a href="#solutions" onClick={() => setMenuOpen(false)}>Solutions</a>
-            <a href="#approach" onClick={() => setMenuOpen(false)}>Our approach</a>
-            <a href="#calculator" onClick={() => setMenuOpen(false)}>Capacity calculator</a>
-            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#process" onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="#calculator" onClick={() => setMenuOpen(false)}>Calculator</a>
             <a href={PROFILE_URL}>Create a profile <ArrowRight size={16} /></a>
           </nav>
         ) : null}
@@ -139,61 +156,68 @@ export function CapstreamHome() {
         <div className={styles.heroVeil} aria-hidden="true" />
         <div className={styles.heroInner} id="main-content">
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>Construction finance, re-engineered</p>
-            <h1>The financial foundation for bigger work.</h1>
+            <p className={styles.kicker}>The complete path from opportunity to execution</p>
+            <h1>Bond the bid.<br /><em>Fund the build.</em></h1>
             <p className={styles.heroLead}>
-              CapStream helps construction contractors secure the bonding and
-              project mobilization funding required to compete for larger work,
-              preserve liquidity, and begin every project from a position of strength.
+              CapStream brings surety bonding and project mobilization funding
+              into one coordinated process—so contractors can qualify, compete,
+              and start awarded work with greater financial capacity.
             </p>
             <div className={styles.heroActions}>
               <a className={styles.primaryButtonLarge} href={PROFILE_URL}>
-                Start your application <ArrowRight size={17} />
+                Build your contractor profile <ArrowRight size={17} />
               </a>
-              <a className={styles.secondaryButton} href="#solutions">
-                Explore our solutions <ChevronDown size={16} />
+              <a className={styles.secondaryButton} href="#process">
+                See the full journey <ChevronDown size={16} />
               </a>
             </div>
             <div className={styles.heroAssurance}>
               <span><LockKeyhole size={15} /> Secure digital application</span>
-              <span><CircleCheck size={15} /> No impact to your credit</span>
+              <span><CircleCheck size={15} /> Applying does not affect your credit</span>
             </div>
           </div>
 
-          <aside className={styles.underwritingPanel} aria-label="Illustrative project readiness summary">
-            <div className={styles.panelHeader}>
+          <aside className={styles.architecturePanel} aria-label="How CapStream connects bonding and project capital">
+            <div className={styles.architectureHeader}>
               <div>
-                <span>Opportunity readiness</span>
-                <strong>Municipal Retrofit</strong>
+                <span>CapStream opportunity architecture</span>
+                <strong>One profile. One coordinated path.</strong>
               </div>
-              <span className={styles.status}><i /> Prepared</span>
+              <span className={styles.liveStatus}><i /> Ready</span>
             </div>
-            <div className={styles.projectMeta}>
-              <div><span>Project</span><strong>Municipal Retrofit</strong></div>
-              <div><span>Sector</span><strong>Public works</strong></div>
-              <div><span>Reference</span><strong>CS-0842</strong></div>
+            <div className={styles.profileNode}>
+              <span>01 / Contractor profile</span>
+              <strong>Your financial story</strong>
+              <small>Experience · ownership · financials · job history</small>
             </div>
-            <div className={styles.summaryValue}>
-              <span>Contract value</span>
-              <strong>$2,400,000</strong>
-            </div>
-            <div className={styles.summaryRows}>
-              <div>
-                <span><ShieldCheck size={18} /> Surety program</span>
-                <strong>Bonding line established</strong>
+            <div className={styles.capacityRails}>
+              <div className={styles.railCard}>
+                <div><ShieldCheck /><span>Surety capacity</span></div>
+                <strong>Bonding line</strong>
+                <small>Bid bonds</small>
               </div>
-              <div>
-                <span><Banknote size={18} /> Mobilization capacity</span>
-                <strong>$480,000</strong>
-              </div>
-              <div>
-                <span><BriefcaseBusiness size={18} /> Application profile</span>
-                <strong>Complete</strong>
+              <div className={styles.railCard}>
+                <div><Banknote /><span>Capital capacity</span></div>
+                <strong>Funding commitment</strong>
+                <small>Project specific</small>
               </div>
             </div>
-            <div className={styles.panelFooter}>
-              <span>Funding illustration</span>
-              <span>Up to 20% of contract value</span>
+            <div className={styles.awardGate}>
+              <span>Contract awarded</span>
+              <i aria-hidden="true" />
+            </div>
+            <div className={styles.activationNode}>
+              <div>
+                <span>Project protection</span>
+                <strong>Payment + performance bonds</strong>
+              </div>
+              <div>
+                <span>Project activation</span>
+                <strong>Up to 20% mobilization funding</strong>
+              </div>
+            </div>
+            <div className={styles.architectureFooter}>
+              <span>Bid</span><i /><span>Bond</span><i /><span>Award</span><i /><span>Mobilize</span>
             </div>
           </aside>
         </div>
@@ -201,90 +225,102 @@ export function CapstreamHome() {
 
       <section className={styles.capabilityBar} aria-label="CapStream capabilities">
         <div>
-          <span>Bonding lines</span>
-          <span>Bid bonds</span>
-          <span>Payment &amp; performance bonds</span>
-          <span>Project mobilization funding</span>
+          <span>One contractor profile</span>
+          <span>SBA surety bond guarantee pathway</span>
+          <span>Bid · payment · performance bonds</span>
+          <span>Up to 20% project startup capital</span>
         </div>
       </section>
 
       <section className={styles.proofBand} aria-label="CapStream at a glance">
-        <div>
-          <span>One</span>
-          <p>company profile across funding and surety</p>
+        <div><span>01</span><p>company profile across funding and surety</p></div>
+        <div><span>20%</span><p>of contract value in potential mobilization funding</p></div>
+        <div><span>24h</span><p>bid bonds often available after a line is established</p></div>
+        <div><span>3d</span><p>up to three days for payment and performance underwriting</p></div>
+        <small>Timelines and capacity are subject to underwriting, eligibility, and complete documentation.</small>
+      </section>
+
+      <section className={styles.advantageSection} id="advantage">
+        <div className={styles.advantageIntro}>
+          <p className={styles.sectionLabel}>The CapStream advantage</p>
+          <h2>One underwriting story.<br /><em>Two forms of capacity.</em></h2>
+          <p>
+            A contractor can have the experience to deliver a project and still
+            lose the opportunity between bonding requirements and upfront cash
+            needs. CapStream was designed around that exact inflection point.
+          </p>
         </div>
-        <div>
-          <span>Up to 20%</span>
-          <p>of contract value in mobilization funding</p>
-        </div>
-        <div>
-          <span>Two</span>
-          <p>coordinated capabilities built for growth</p>
+        <div className={styles.integrationDiagram} aria-label="CapStream coordinates surety and capital before and after contract award">
+          <div className={styles.diagramPhase}><span>Before award</span><small>Prove capacity to compete</small></div>
+          <div className={styles.diagramCard}>
+            <span>Surety</span>
+            <ShieldCheck />
+            <strong>Bonding capacity</strong>
+            <p>Establish a line, secure bid bonds, and enter the procurement process prepared.</p>
+          </div>
+          <div className={styles.diagramCenter}>
+            <span>One profile</span>
+            <i />
+            <strong>Contract award</strong>
+            <i />
+            <span>One relationship</span>
+          </div>
+          <div className={styles.diagramCard}>
+            <span>Capital</span>
+            <Banknote />
+            <strong>Mobilization capacity</strong>
+            <p>Activate project-specific funding for the costs that arrive before the first payment.</p>
+          </div>
+          <div className={styles.diagramPhase}><span>After award</span><small>Put capacity into motion</small></div>
         </div>
       </section>
 
-      <section className={styles.introduction} id="solutions">
-        <div className={styles.sectionLabel}>A coordinated solution</div>
-        <div>
-          <h2>Capital should accelerate the work, not stand in its way.</h2>
-          <p>
-            Winning substantial contracts requires more than opportunity. It
-            requires the financial capacity to qualify, mobilize, and perform.
-            CapStream brings those requirements into one considered process.
-          </p>
+      <section className={styles.solutionsSection} id="solutions">
+        <div className={styles.solutionsHeading}>
+          <p className={styles.kickerLight}>The integrated platform</p>
+          <h2>Built for the entire opportunity—not one transaction.</h2>
+        </div>
+        <div className={styles.solutionCards}>
+          <article className={styles.solutionCard}>
+            <div className={styles.solutionIndex}><span>01 / Surety</span><ShieldCheck /></div>
+            <h3>Establish the credibility to compete.</h3>
+            <p>Build a bonding program around your experience, financial position, and largest completed work.</p>
+            <ul>
+              <li><Check /> Bonding line</li>
+              <li><Check /> Bid bonds</li>
+              <li><Check /> Payment and performance bonds</li>
+            </ul>
+            <a href="https://capstream.app/surety-bonding">Explore surety bonding <ArrowRight size={16} /></a>
+          </article>
+          <article className={styles.solutionCard}>
+            <div className={styles.solutionIndex}><span>02 / Capital</span><Banknote /></div>
+            <h3>Fund the critical first phase of delivery.</h3>
+            <p>Access project-specific capital tied to the awarded contract and the real costs of getting started.</p>
+            <ul>
+              <li><Check /> Bond costs and materials</li>
+              <li><Check /> Equipment rentals</li>
+              <li><Check /> Flexible funding structure</li>
+            </ul>
+            <a href="https://capstream.app/mobilization-funding">Explore mobilization funding <ArrowRight size={16} /></a>
+          </article>
         </div>
       </section>
 
-      <section className={styles.solutionSection}>
-        <article className={styles.solutionCard}>
-          <div className={styles.solutionTopline}><span>01</span><ShieldCheck /></div>
-          <p className={styles.cardEyebrow}>Surety solutions</p>
-          <h3>Establish the credibility to compete.</h3>
+      <section className={styles.processSection} id="process">
+        <div className={styles.processIntro}>
+          <p className={styles.kicker}>How it works</p>
+          <h2>From company profile to first day on site.</h2>
           <p>
-            Build a bonding program designed around your experience, financial
-            position, and growth objectives, with support from bid through award.
-          </p>
-          <ul>
-            <li><Check /> Bonding line</li>
-            <li><Check /> Bid bonds</li>
-            <li><Check /> Payment and performance bonds</li>
-          </ul>
-          <a href="https://capstream.app/surety-bonding">
-            View surety solutions <ArrowRight size={16} />
-          </a>
-        </article>
-        <article className={styles.solutionCard}>
-          <div className={styles.solutionTopline}><span>02</span><Banknote /></div>
-          <p className={styles.cardEyebrow}>Capital solutions</p>
-          <h3>Fund the critical first phase of delivery.</h3>
-          <p>
-            Access up to 20% of contract value to support the upfront costs that
-            arise before project revenue begins to flow.
-          </p>
-          <ul>
-            <li><Check /> Bond costs and materials</li>
-            <li><Check /> Equipment and project startup</li>
-            <li><Check /> Flexible funding structure</li>
-          </ul>
-          <a href="https://capstream.app/mobilization-funding">
-            View capital solutions <ArrowRight size={16} />
-          </a>
-        </article>
-      </section>
-
-      <section className={styles.approachSection} id="approach">
-        <div className={styles.approachIntro}>
-          <p className={styles.kickerLight}>Our approach</p>
-          <h2>A disciplined process, built for decisive opportunities.</h2>
-          <p>
-            A single profile provides the foundation for your bonding program
-            and project-specific capital needs.
+            The CapStream process follows the way opportunities actually move:
+            preparation before the bid, protection at award, and capital at mobilization.
           </p>
         </div>
+        <div className={styles.phaseLegend}><span>Bid phase</span><span>Award phase</span></div>
         <div className={styles.processGrid}>
-          {processSteps.map(({ number, title, body, icon: Icon }) => (
+          {processSteps.map(({ number, phase, title, body, icon: Icon }) => (
             <article key={number}>
-              <div><span>{number}</span><Icon /></div>
+              <div className={styles.processTop}><span>{number}</span><Icon /></div>
+              <small>{phase}</small>
               <h3>{title}</h3>
               <p>{body}</p>
             </article>
@@ -292,14 +328,42 @@ export function CapstreamHome() {
         </div>
       </section>
 
+      <section className={styles.mandateSection} id="about">
+        <div className={styles.mandateCopy}>
+          <p className={styles.kickerLight}>Institutional capability. Entrepreneurial mandate.</p>
+          <h2>Built to widen<br />who gets to build.</h2>
+          <p>
+            CapStream helps small, diverse, and emerging contractors overcome
+            two of the most persistent barriers in public contracting: surety
+            capacity and startup capital.
+          </p>
+          <a href="https://blog.capstream.app">Read CapStream insights <ArrowRight size={16} /></a>
+        </div>
+        <div className={styles.mandatePanel}>
+          <div className={styles.mandatePanelTop}><span>Program architecture</span><Landmark /></div>
+          <div className={styles.programRow}>
+            <span>Surety pathway</span>
+            <strong>SBA Surety Bond Guarantee</strong>
+            <p>Used with project financing commitments to support greater bonding capacity.</p>
+          </div>
+          <div className={styles.programRow}>
+            <span>Capital pathway</span>
+            <strong>Founders&apos; Impact</strong>
+            <p>CapStream&apos;s parent is a Specialized Small Business Investment Company.</p>
+          </div>
+          <div className={styles.programNote}>
+            CapStream&apos;s model connects the surety and capital pathways in one contractor experience. Program participation and final terms remain subject to eligibility and underwriting.
+          </div>
+        </div>
+      </section>
+
       <section className={styles.calculatorSection} id="calculator">
         <div className={styles.calculatorIntro}>
-          <p className={styles.kicker}>Project capacity calculator</p>
-          <h2>Consider the capital available for your next award.</h2>
+          <p className={styles.kicker}>Project capital calculator</p>
+          <h2>See what 20% can mean for mobilization.</h2>
           <p>
-            Adjust the contract value to see an illustrative estimate of
-            potential mobilization funding. Final terms depend on underwriting
-            and project details.
+            Adjust the contract value to see an illustrative estimate of potential
+            project startup funding. Final terms depend on underwriting and project details.
           </p>
           <label htmlFor="contract-value">Contract value</label>
           <div className={styles.rangeValue}>{formatCurrency(contractValue)}</div>
@@ -316,61 +380,41 @@ export function CapstreamHome() {
           <div className={styles.rangeScale}><span>$250,000</span><span>$10,000,000</span></div>
         </div>
         <div className={styles.estimateCard}>
-          <div className={styles.estimateHeader}>
-            <span>Illustrative estimate</span>
-            <Landmark size={20} />
-          </div>
+          <div className={styles.estimateHeader}><span>Illustrative mobilization capacity</span><Banknote size={20} /></div>
           <div className={styles.estimateMain}>
-            <span>Potential mobilization funding</span>
+            <span>Potential project startup funding</span>
             <strong>{formatCurrency(funding)}</strong>
             <small>Up to 20% of contract value</small>
           </div>
           <div className={styles.estimateDetails}>
             <div><span>Contract value</span><strong>{formatCurrency(contractValue)}</strong></div>
-            <div><span>Application</span><strong>One company profile</strong></div>
-            <div><span>Credit inquiry</span><strong>No impact</strong></div>
+            <div><span>Application structure</span><strong>One company profile</strong></div>
+            <div><span>Credit inquiry</span><strong>No impact to apply</strong></div>
           </div>
-          <a className={styles.primaryButtonLarge} href={PROFILE_URL}>
-            Discuss your opportunity <ArrowRight size={17} />
-          </a>
+          <a className={styles.primaryButtonLarge} href={PROFILE_URL}>Discuss your opportunity <ArrowRight size={17} /></a>
         </div>
       </section>
 
-      <section className={styles.differenceSection}>
-        <div>
-          <p className={styles.kicker}>Why CapStream</p>
-          <h2>Designed around the realities of construction growth.</h2>
-        </div>
-        <div className={styles.differenceGrid}>
-          <article><Handshake /><h3>One coordinated relationship</h3><p>Bonding and mobilization needs considered through a single digital experience.</p></article>
-          <article><BriefcaseBusiness /><h3>Capacity before opportunity</h3><p>Establish your position early so you can approach larger bids with greater certainty.</p></article>
-          <article><Building2 /><h3>Capital aligned to the project</h3><p>Funding intended for the tangible startup costs that support successful delivery.</p></article>
-        </div>
-      </section>
-
-      <section className={styles.aboutSection} id="about">
-        <div className={styles.aboutStatement}>
-          <span>CapStream</span>
-          <blockquote>
-            “Growth should not stall between contract award and project mobilization.”
-          </blockquote>
-        </div>
-        <div className={styles.aboutCopy}>
-          <p className={styles.kickerLight}>About CapStream</p>
-          <h2>Financial capacity for the work ahead.</h2>
+      <section className={styles.underwritingSection}>
+        <div className={styles.underwritingIntro}>
+          <p className={styles.sectionLabel}>Start prepared</p>
+          <h2>Serious capacity starts with a complete picture.</h2>
           <p>
-            CapStream combines surety bonding and project mobilization funding
-            in a single application process, helping small businesses increase
-            bonding capacity and access capital.
+            CapStream&apos;s profile is designed for real underwriting—not a generic
+            lead form. Bring the core documents that demonstrate how your business performs.
           </p>
-          <a href={PROFILE_URL}>Learn about CapStream <ArrowRight size={16} /></a>
+        </div>
+        <div className={styles.documentList}>
+          {underwritingItems.map((item, index) => (
+            <div key={item}><span>0{index + 1}</span><strong>{item}</strong><CircleCheck /></div>
+          ))}
         </div>
       </section>
 
       <section className={styles.finalCta}>
         <div>
-          <p>Prepare for your next opportunity</p>
-          <h2>Build the capacity to move forward.</h2>
+          <p>Prepare before the next opportunity</p>
+          <h2>Your next contract should not outgrow your capacity.</h2>
         </div>
         <a href={PROFILE_URL}>Create your profile <ArrowRight size={17} /></a>
       </section>
@@ -382,7 +426,7 @@ export function CapstreamHome() {
             <p>Surety bonding and project mobilization funding for construction contractors.</p>
           </div>
           <div className={styles.footerLinks}>
-            <div><strong>Solutions</strong><a href="https://capstream.app/surety-bonding">Surety bonding</a><a href="https://capstream.app/mobilization-funding">Mobilization funding</a><a href="#calculator">Capacity calculator</a></div>
+            <div><strong>Solutions</strong><a href="https://capstream.app/surety-bonding">Surety bonding</a><a href="https://capstream.app/mobilization-funding">Mobilization funding</a><a href="#calculator">Capital calculator</a></div>
             <div><strong>Company</strong><a href="#about">About</a><a href="https://blog.capstream.app">Insights</a><a href={PROFILE_URL}>Apply</a></div>
             <div><strong>Contact</strong><a href="mailto:team@capstream.app">team@capstream.app</a><a href="tel:+16464421040">646 442 1040</a><span>140 W 31st Street, New York</span></div>
           </div>
